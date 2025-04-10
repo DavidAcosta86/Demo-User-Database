@@ -9,6 +9,13 @@
     class="bg-green-100 text-gray-900 min-h-screen flex items-center justify-center"
   >
     <div
+      th:if="${param.logout}"
+      class="absolute top-4 left-1/2 transform -translate-x-1/2 bg-green-200 text-green-800 px-4 py-2 rounded shadow"
+    >
+      Session closed successfully
+    </div>
+
+    <div
       class="text-center bg-white p-10 rounded-2xl shadow-md max-w-lg w-full"
     >
       <h1 class="text-3xl font-bold mb-6">Welcome to the App</h1>

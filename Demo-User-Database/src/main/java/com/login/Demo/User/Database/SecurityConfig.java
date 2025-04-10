@@ -22,21 +22,27 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-                .csrf(csrf -> csrf.disable())
-                .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/", "/login").permitAll()
-                        .anyRequest().authenticated())
-                .oauth2Login(oauth -> oauth
-                        .loginPage("/login")
-                        .userInfoEndpoint(userInfo -> userInfo.userService(userService)) // por si Spring lo necesita
-                        .successHandler((request, response, authentication) -> {
-                            OAuth2AuthenticationToken oauth2Auth = (OAuth2AuthenticationToken) authentication;
-                            userService.processOAuth2User(oauth2Auth);
-                            response.sendRedirect("/home");
-                        }))
-                .logout(logout -> logout
-                        .logoutSuccessUrl("/").permitAll());
-
-        return http.build();
+            .csrf(csrf -> csrf.disable())
+            .authorizeHttpRequests(auth -> auth
+                .requestMatchers("/", "/login").permitAll()
+                .anyRequest().authenticated()
+            )
+            .oauth2Login(oauth -> oauth
+                .loginPage("/login")
+                .userInfoEndpoint(userInfo -> userInfo.userService(userService))
+                                .successHandler((request, response, authentication) -> {
+                    OAuth2AuthenticationToken oauth2Auth = (OAuth2AuthenticationToken) authentication;
+                    userService.processOAuth2User(oauth2Auth);
+                    response.sendRedirect("/home");
+                })
+            )
+            .logout(logout -> logout
+                .logoutSuccessUrl("/?logout")
+                .invalidateHttpSession(true)
+                .clearAuthentication(true)
+                .deleteCookies("JSESSIONID")
+            );
+    
+     return http.build();
     }
 }
