@@ -2,6 +2,8 @@ package com.login.Demo.User.Database.Entities;
 
 import java.util.UUID;
 
+import org.hibernate.validator.constraints.URL;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -42,6 +44,10 @@ public class User {
     @Column(name = "user_role")
     @Enumerated(EnumType.STRING)
     private Role userRole;
+
+    @Column(name = "profile_pic_url")
+    @URL
+    private String profilePicUrl;
 
     @Column(name = "is_active")
     private Boolean isActive;

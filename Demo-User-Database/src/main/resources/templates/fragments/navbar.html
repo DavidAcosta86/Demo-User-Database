@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+  <body>
+    <div th:fragment="navbar">
+      <nav class="bg-green-100 text-green-900 p-4 shadow-md">
+        <div class="max-w-6xl mx-auto flex justify-between items-center">
+          <a href="/" class="text-xl font-bold text-green-800">My Portfolio</a>
+          <div class="space-x-4">
+            <a href="/" class="hover:text-green-600 font-medium">Home</a>
+            <a href="/users" class="hover:text-green-600 font-medium">Users</a>
+            <a href="/logout" class="hover:text-green-600 font-medium"
+              >Logout</a
+            >
+          </div>
+        </div>
+      </nav>
+    </div>
+  </body>
+</html>

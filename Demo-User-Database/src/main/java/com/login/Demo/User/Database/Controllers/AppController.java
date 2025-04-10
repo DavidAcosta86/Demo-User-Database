@@ -25,6 +25,7 @@ public class AppController {
         Map<String, Object> attributes = authentication.getPrincipal().getAttributes();
         model.addAttribute("name", attributes.get("name"));
         model.addAttribute("email", attributes.get("email"));
+        model.addAttribute("picture", attributes.get("picture"));
         return "/home";
     }
 }

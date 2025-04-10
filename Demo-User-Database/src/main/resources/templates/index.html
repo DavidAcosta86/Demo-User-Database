@@ -1,10 +1,23 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
   <head>
-    <title>Inicio</title>
+    <meta charset="UTF-8" />
+    <title>Welcome</title>
+    <script src="https://cdn.tailwindcss.com"></script>
   </head>
-  <body>
-    <h1>Bienvenido a la app</h1>
-    <a href="/login">Iniciar sesión con Google</a>
+  <body
+    class="bg-green-100 text-gray-900 min-h-screen flex items-center justify-center"
+  >
+    <div
+      class="text-center bg-white p-10 rounded-2xl shadow-md max-w-lg w-full"
+    >
+      <h1 class="text-3xl font-bold mb-6">Welcome to the App</h1>
+      <a
+        href="/login"
+        class="inline-block bg-green-600 hover:bg-green-700 text-white font-semibold py-2 px-6 rounded-xl transition-all duration-300"
+      >
+        Sign in with Google
+      </a>
+    </div>
   </body>
 </html>

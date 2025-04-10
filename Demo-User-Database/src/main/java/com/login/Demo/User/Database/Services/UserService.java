@@ -26,12 +26,14 @@ public class UserService extends DefaultOAuth2UserService {
 
         String email = (String) attributes.get("email");
         String name = (String) attributes.get("name");
+        String pictureUrl = (String) attributes.get("picture");
 
         userRepository.findByEmail(email).orElseGet(() -> {
             User newUser = User.builder()
                     .userName(name)
                     .email(email)
                     .userRole(Role.USER) // o lo que necesites por defecto
+                    .profilePicUrl(pictureUrl)
                     .isActive(true)
                     .build();
             return userRepository.save(newUser);
